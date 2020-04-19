@@ -1,0 +1,1 @@
+en esta carpeta probamos por separado los scripts tanto de tw como los de tensorflow, asi como entrenar los modelos y probarlos, antes de implementarlo en el proyecto.
