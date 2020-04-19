@@ -72,10 +72,16 @@ router.post('/', function(req, res, next) {
     screen_name: req.body.usuario,
   }
   Twitter.get('users/show', params ,  function (err, data, response) {
+    //process image
+    //const image = await convert(req.file.buffer)
+    //const predictions = await req.app.get('_model').classify(image)
+    //res.json(predictions)
+
+
     data.profile_banner_url = data.profile_banner_url+'/1500x500';
      data.profile_image_url_https = data.profile_image_url_https.replace("_normal", "")
      data.created_at = data.created_at.substr(data.created_at.length - 4)
-     res.render('result', { data: data });
+     res.render('result', { data: data, resultado: "No" });
   })
 
 });
