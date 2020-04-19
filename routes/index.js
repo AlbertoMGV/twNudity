@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var request = require('request').defaults({ encoding: null });
+
+
 var twit = require('twit');
 var config = require('./config.js'); //nuestro token, esta priv
 var Twitter = new twit(config);
@@ -37,51 +40,35 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'twNudity' });
 });
 
-router.post('/analizar', upload.single("image"), async (req, res) => {
-  if (!req.file)
-    res.status(400).send("Missing image multipart/form-data")
-  else {
-    const image = await convert(req.file.buffer)
-    const predictions = await req.app.get('_model').classify(image)
-    res.json(predictions)
-  }
-})
-
-var getUserData = function(arroba){
-  var params = {
-    screen_name: arroba,
-  }
-  Twitter.get('users/show', params ,  function (err, data, response) {
-    console.log('***************************');
-     console.log('Nombre: '+data.name);
-     console.log('Arroba: '+data.screen_name);
-     console.log('ID: '+data.id_str);
-     console.log('Seguidos: '+data.friends_count);
-     console.log('Seguidores: '+data.followers_count);
-     console.log('Twits: '+data.statuses_count);
-     console.log('Favs: '+data.favourites_count);
-     console.log('***************************');
-
-     return data;
-
-  })
-}
-
 router.post('/', function(req, res, next) {
   var params = {
     screen_name: req.body.usuario,
   }
   Twitter.get('users/show', params ,  function (err, data, response) {
-    //process image
-    //const image = await convert(req.file.buffer)
-    //const predictions = await req.app.get('_model').classify(image)
-    //res.json(predictions)
+    
+    request.get(data.profile_image_url_https.replace("_normal", ""), async (error, response, body) => {
+        if (!error && response.statusCode == 200) {
+            new Buffer(body)
+            const image = await convert(new Buffer(body))
+            const predictions = await req.app.get('_model').classify(image)
 
+            if (predictions[0].probability>0.80) {
+               analisis = "Si ("+predictions[0].probability.toFixed(5)+")";
+            } else if (predictions[0].probability>0.40) {
+              analisis = "Probablemente ("+predictions[0].probability.toFixed(5)+")";
+            } else {
+              analisis = "No ("+predictions[0].probability.toFixed(5)+")";
+            }
 
-    data.profile_banner_url = data.profile_banner_url+'/1500x500';
-     data.profile_image_url_https = data.profile_image_url_https.replace("_normal", "")
-     data.created_at = data.created_at.substr(data.created_at.length - 4)
-     res.render('result', { data: data, resultado: "No" });
+            console.log("------------PORNO:"+predictions[0].probability);
+            console.log("------------SEXY:"+predictions[1].probability);
+
+            data.profile_banner_url = data.profile_banner_url+'/1500x500';
+            data.profile_image_url_https = data.profile_image_url_https.replace("_normal", "")
+            data.created_at = data.created_at.substr(data.created_at.length - 4)
+            res.render('result', { data: data, resultado: analisis });
+        }
+    });
   })
 
 });
