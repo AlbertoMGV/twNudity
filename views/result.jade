@@ -51,6 +51,7 @@ html(lang='en')
           .row
             .col-md-12.heading-title
               h1 Resultado
+              h5 Información
               table(style='width: 100%;')
                 tbody
                   tr
@@ -59,60 +60,39 @@ html(lang='en')
                     th Creación
                     th Twits
                     th Seguidores
-                    th Contenido adulto (Probabilidad)
                   tr
                     td #{data.screen_name}
                     td #{data.name}
                     td #{data.created_at}
                     td #{data.statuses_count}
                     td #{data.followers_count}
-                    td Foto de Perfil:
+              br
+              br
+              h5 Contenido adulto - Probabilidades
+              table(style='width: 100%;')
+                tbody
                   tr
-                    td
-                    td
-                    td
-                    td
-                    td
+                    th Foto de Perfil Porno
+                    th Foto de Perfil Sexy
+                    th Banner Porno
+                    th Banner Sexy
+                  tr
                     td #{resultado.perfilPorn}
-                  tr
-                    td
-                    td
-                    td
-                    td
-                    td
                     td #{resultado.perfilSexy}
-                  tr
-                    td
-                    td
-                    td
-                    td
-                    td
-                    td Banner:
-                  tr
-                    td
-                    td
-                    td
-                    td
-                    td
                     td #{resultado.bannerPorn}
-                  tr
-                    td
-                    td
-                    td
-                    td
-                    td
                     td #{resultado.bannerSexy}
           br
           #explicito
-            
+            h2.heading-section.mb-4.pb-md-3
+              small
             .row
               .col-md-4
                 .card
-                  img.card-img-top(src='#{data.profile_image_url_https}', alt='...')
+                  img.card-img-top(src=data.profile_image_url_https, alt='...')
                 br
               .col-md-8
                 .card
-                  img.card-img-top(src='#{data.profile_banner_url}', alt='...')
+                  img.card-img-top(src=data.profile_banner_url, alt='...')
                 br
       br
       br

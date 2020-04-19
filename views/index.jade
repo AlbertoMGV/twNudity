@@ -91,15 +91,15 @@ html(lang='en')
                     i.ion-ios-close
           .row
             h5    Nombre de usuario
-            form(action='/', method='post')
-              .col-lg-3.col-sm-4
+            form(action='/', method='post', style='width: 100%')
+              .col-lg-4.col-sm-4
                 .form-group
                   .input-group
                     .input-group-prepend
                       span.input-group-text
                         i.ion-ios-people
                     input.form-control(type='text', name='usuario', placeholder='@ejemplo')
-              .col-lg-3.col-sm-4
+              .col-lg-4.col-sm-4
                 button.btn.btn-primary(type='submit') Analizar
           div
             #load.col-md-12(style='display: none;')

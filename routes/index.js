@@ -58,20 +58,20 @@ router.post('/', function(req, res, next) {
                     resultado =[];
                     for (var i = predictions.length - 1; i >= 0; i--) {
                       if (predictions[i].className=="Sexy") {
-                        resultado.perfilSexy = "Sexy: "+(predictions[i].probability*100).toFixed(2)+"%";
+                        resultado.perfilSexy = (predictions[i].probability*100).toFixed(2)+"%";
                       }
                       if (predictions[i].className=="Porn") {
-                        resultado.perfilPorn = "Porno: "+(predictions[i].probability*100).toFixed(2)+"%";
+                        resultado.perfilPorn = (predictions[i].probability*100).toFixed(2)+"%";
                       }
                       
                     }
 
                     for (var i = predictions1.length - 1; i >= 0; i--) {
                       if (predictions1[i].className=="Sexy") {
-                        resultado.bannerSexy = "Sexy: "+(predictions1[i].probability*100).toFixed(2)+"%";
+                        resultado.bannerSexy = (predictions1[i].probability*100).toFixed(2)+"%";
                       }
                       if (predictions1[i].className=="Porn") {
-                        resultado.bannerPorn = "Porno: "+(predictions1[i].probability*100).toFixed(2)+"%";
+                        resultado.bannerPorn = (predictions1[i].probability*100).toFixed(2)+"%";
                       }
                       
                     }
