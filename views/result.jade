@@ -59,18 +59,52 @@ html(lang='en')
                     th Creación
                     th Twits
                     th Seguidores
-                    th Contenido adulto
+                    th Contenido adulto (Probabilidad)
                   tr
                     td #{data.screen_name}
                     td #{data.name}
                     td #{data.created_at}
                     td #{data.statuses_count}
                     td #{data.followers_count}
-                    td #{resultado}
+                    td Foto de Perfil:
+                  tr
+                    td
+                    td
+                    td
+                    td
+                    td
+                    td #{resultado.perfilPorn}
+                  tr
+                    td
+                    td
+                    td
+                    td
+                    td
+                    td #{resultado.perfilSexy}
+                  tr
+                    td
+                    td
+                    td
+                    td
+                    td
+                    td Banner:
+                  tr
+                    td
+                    td
+                    td
+                    td
+                    td
+                    td #{resultado.bannerPorn}
+                  tr
+                    td
+                    td
+                    td
+                    td
+                    td
+                    td #{resultado.bannerSexy}
           br
           #explicito
-            h2.heading-section.mb-4.pb-md-3
-              small Fotos de perfil y Banner:
+            
             .row
               .col-md-4
                 .card

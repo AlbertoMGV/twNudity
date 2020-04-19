@@ -48,25 +48,40 @@ router.post('/', function(req, res, next) {
     
     request.get(data.profile_image_url_https.replace("_normal", ""), async (error, response, body) => {
         if (!error && response.statusCode == 200) {
-            new Buffer(body)
             const image = await convert(new Buffer(body))
             const predictions = await req.app.get('_model').classify(image)
 
-            if (predictions[0].probability>0.80) {
-               analisis = "Si ("+predictions[0].probability.toFixed(5)+")";
-            } else if (predictions[0].probability>0.40) {
-              analisis = "Probablemente ("+predictions[0].probability.toFixed(5)+")";
-            } else {
-              analisis = "No ("+predictions[0].probability.toFixed(5)+")";
-            }
+            request.get(data.profile_banner_url+'/1500x500', async (error, response, body) => {
+                if (!error && response.statusCode == 200) {
+                    const image = await convert(new Buffer(body))
+                    const predictions1 = await req.app.get('_model').classify(image)
+                    resultado =[];
+                    for (var i = predictions.length - 1; i >= 0; i--) {
+                      if (predictions[i].className=="Sexy") {
+                        resultado.perfilSexy = "Sexy: "+(predictions[i].probability*100).toFixed(2)+"%";
+                      }
+                      if (predictions[i].className=="Porn") {
+                        resultado.perfilPorn = "Porno: "+(predictions[i].probability*100).toFixed(2)+"%";
+                      }
+                      
+                    }
 
-            console.log("------------PORNO:"+predictions[0].probability);
-            console.log("------------SEXY:"+predictions[1].probability);
+                    for (var i = predictions1.length - 1; i >= 0; i--) {
+                      if (predictions1[i].className=="Sexy") {
+                        resultado.bannerSexy = "Sexy: "+(predictions1[i].probability*100).toFixed(2)+"%";
+                      }
+                      if (predictions1[i].className=="Porn") {
+                        resultado.bannerPorn = "Porno: "+(predictions1[i].probability*100).toFixed(2)+"%";
+                      }
+                      
+                    }
 
-            data.profile_banner_url = data.profile_banner_url+'/1500x500';
-            data.profile_image_url_https = data.profile_image_url_https.replace("_normal", "")
-            data.created_at = data.created_at.substr(data.created_at.length - 4)
-            res.render('result', { data: data, resultado: analisis });
+                    data.profile_banner_url = data.profile_banner_url+'/1500x500';
+                    data.profile_image_url_https = data.profile_image_url_https.replace("_normal", "")
+                    data.created_at = data.created_at.substr(data.created_at.length - 4)
+                    res.render('result', { data: data, resultado: resultado });
+                }
+            });
         }
     });
   })
