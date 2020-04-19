@@ -1,16 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
+const express = require('express')
 const multer = require('multer')
 const jpeg = require('jpeg-js')
 
 const tf = require('@tensorflow/tfjs-node')
 const nsfw = require('nsfwjs')
 
-var upload = multer()
+const app = express()
+const upload = multer()
+
+let _model
 
 const convert = async (img) => {
   // Decoded image in UInt8 Byte array
@@ -27,20 +25,19 @@ const convert = async (img) => {
   return tf.tensor3d(values, [image.height, image.width, numChannels], 'int32')
 }
 
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'twNudity' });
-});
-
-router.post('/', upload.single("image"), async (req, res) => {
+app.post('/nsfw', upload.single("image"), async (req, res) => {
   if (!req.file)
     res.status(400).send("Missing image multipart/form-data")
   else {
     const image = await convert(req.file.buffer)
-    const predictions = await req.app.get('_model').classify(image)
+    const predictions = await _model.classify(image)
     res.json(predictions)
   }
 })
 
-module.exports = router;
+const load_model = async () => {
+  _model = await nsfw.load()
+}
+
+// Keep the model in memory, make sure it's loaded only once
+load_model().then(() => app.listen(8080))

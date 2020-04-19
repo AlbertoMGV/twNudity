@@ -7,15 +7,20 @@
     "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@tensorflow/tfjs": "^1.7.2",
+    "@tensorflow/tfjs-node": "^1.7.2",
     "acorn": "^7.1.1",
     "clean-css": "^4.2.3",
     "constantinople": "^4.0.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
+    "express": "^4.16.4",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
+    "jpeg-js": "^0.3.7",
     "morgan": "~1.9.1",
+    "multer": "^1.4.2",
+    "nsfwjs": "^2.1.0",
     "uglify-js": "^3.9.1"
   }
 }

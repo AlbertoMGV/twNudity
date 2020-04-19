@@ -4,10 +4,43 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const multer = require('multer')
+const jpeg = require('jpeg-js')
+
+const tf = require('@tensorflow/tfjs-node')
+const nsfw = require('nsfwjs')
+
+var upload = multer()
+
+var _model
+
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var userRouter = require('./routes/users');
 
 var app = express();
+
+
+
+const convert = async (img) => {
+  // Decoded image in UInt8 Byte array
+  const image = await jpeg.decode(img, true)
+
+  const numChannels = 3
+  const numPixels = image.width * image.height
+  const values = new Int32Array(numPixels * numChannels)
+
+  for (let i = 0; i < numPixels; i++)
+    for (let c = 0; c < numChannels; ++c)
+      values[i * numChannels + c] = image.data[i * 4 + c]
+
+  return tf.tensor3d(values, [image.height, image.width, numChannels], 'int32')
+}
+
+const load_model = async () => {
+  _model = await nsfw.load()
+}
+
+load_model().then(() => app.set('_model',_model));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +53,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/user', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -37,5 +70,15 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.post('/analizar', upload.single("image"), async (req, res) => {
+  if (!req.file)
+    res.status(400).send("Missing image multipart/form-data")
+  else {
+    const image = await convert(req.file.buffer)
+    const predictions = await _model.classify(image)
+    res.json(predictions)
+  }
+})
 
 module.exports = app;
