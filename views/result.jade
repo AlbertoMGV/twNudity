@@ -1,0 +1,116 @@
+doctype html
+html(lang='en')
+  head
+    title twNudity
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Prata&display=swap', rel='stylesheet')
+    link(rel='stylesheet', href='css/open-iconic-bootstrap.min.css')
+    link(rel='stylesheet', href='css/animate.css')
+    link(rel='stylesheet', href='css/owl.carousel.min.css')
+    link(rel='stylesheet', href='css/owl.theme.default.min.css')
+    link(rel='stylesheet', href='css/magnific-popup.css')
+    link(rel='stylesheet', href='css/aos.css')
+    link(rel='stylesheet', href='css/ionicons.min.css')
+    link(rel='stylesheet', href='css/bootstrap-datetimepicker.min.css')
+    link(rel='stylesheet', href='css/nouislider.css')
+    link(rel='stylesheet', href='css/flaticon.css')
+    link(rel='stylesheet', href='css/icomoon.css')
+    link(rel='stylesheet', href='css/style.css')
+  body
+    .main-section
+      div
+        nav#ftco-navbar.navbar.navbar-expand-lg.navbar-dark.ftco_navbar.bg-dark.ftco-navbar-dark
+          .container
+            a.navbar-brand(href='/') twNudity
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#ftco-nav', aria-controls='ftco-nav', aria-expanded='false', aria-label='Toggle navigation')
+              span.oi.oi-menu
+              |  Menu
+            #ftco-nav.collapse.navbar-collapse
+              ul.navbar-nav.ml-auto
+                li.dropdown.nav-item
+                  a.dropdown-toggle.nav-link.icon.d-flex.align-items-center(href='#', data-toggle='dropdown')
+                    i.ion-ios-apps.mr-2
+                    |                 Componentes
+                    b.caret
+                  .dropdown-menu.dropdown-menu-left
+                    a.dropdown-item(href='https://developer.twitter.com/en/docs', target='_blank')
+                      i.ion-ios-document.mr-2
+                      |  Twitter API
+                    a.dropdown-item(href='https://www.tensorflow.org/js', target='_blank')
+                      i.ion-ios-document.mr-2
+                      |  Tensorflow.js
+                li.nav-item
+                  a.nav-link.icon.d-flex.align-items-center(href='https://github.com/AlbertoMGV/twNudity', target='_blank')
+                    i.ion-logo-github.mr-2
+                    |  Source Code
+      // END nav
+      section#resultado.ftco-section.bg-light
+        .container
+          .row
+            .col-md-12.heading-title
+              h1 Resultado
+              table(style='width: 100%;')
+                tbody
+                  tr
+                    th Nombre de usuario
+                    th Nombre completo
+                    th Creación
+                    th Twits
+                    th Seguidores
+                    th Contenido adulto
+                  tr
+                    td #{data.screen_name}
+                    td #{data.name}
+                    td #{data.created_at}
+                    td #{data.statuses_count}
+                    td #{data.followers_count}
+                    td Si
+          br
+          #explicito
+            h2.heading-section.mb-4.pb-md-3
+              small Fotos de perfil y Banner:
+            .row
+              .col-md-4
+                .card
+                  img.card-img-top(src='#{data.profile_image_url_https}', alt='...')
+                br
+              .col-md-8
+                .card
+                  img.card-img-top(src='#{data.profile_banner_url}', alt='...')
+                br
+      br
+      br
+      footer.ftco-section.ftco-section-2(style='background-color: #343A40;')
+        .col-md-12.text-center
+          p.mb-0(style='color: white;')
+            // Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+            | Copyright ©
+            script.
+              document.write(new Date().getFullYear());
+            |  All rights reserved | This template is made with 
+            i.icon-heart(aria-hidden='true')
+            |  by 
+            a(href='https://colorlib.com', target='_blank', style='color: white;') Colorlib
+            // Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+            // loader
+            #ftco-loader.show.fullscreen
+              svg.circular(width='48px', height='48px')
+                circle.path-bg(cx='24', cy='24', r='22', fill='none', stroke-width='4', stroke='#eeeeee')
+                circle.path(cx='24', cy='24', r='22', fill='none', stroke-width='4', stroke-miterlimit='10', stroke='#F96D00')
+            script(src='js/jquery.min.js')
+            script(src='js/jquery-migrate-3.0.1.min.js')
+            script(src='js/popper.min.js')
+            script(src='js/bootstrap.min.js')
+            script(src='js/jquery.easing.1.3.js')
+            script(src='js/jquery.waypoints.min.js')
+            script(src='js/jquery.stellar.min.js')
+            script(src='js/owl.carousel.min.js')
+            script(src='js/jquery.magnific-popup.min.js')
+            script(src='js/aos.js')
+            script(src='js/nouislider.min.js')
+            script(src='js/moment-with-locales.min.js')
+            script(src='js/bootstrap-datetimepicker.min.js')
+            script(src='js/main.js')
+            script(src='js/twNudity.js')

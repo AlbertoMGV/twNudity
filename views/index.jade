@@ -91,15 +91,16 @@ html(lang='en')
                     i.ion-ios-close
           .row
             h5    Nombre de usuario
-            .col-lg-3.col-sm-4
-              .form-group
-                .input-group
-                  .input-group-prepend
-                    span.input-group-text
-                      i.ion-ios-people
-                  input.form-control(type='text', placeholder='@ejemplo')
-            .col-lg-3.col-sm-4
-              a.btn.btn-primary(href='#analizar', onclick='analizeUser()') Analizar
+            form(action='/', method='post')
+              .col-lg-3.col-sm-4
+                .form-group
+                  .input-group
+                    .input-group-prepend
+                      span.input-group-text
+                        i.ion-ios-people
+                    input.form-control(type='text', name='usuario', placeholder='@ejemplo')
+              .col-lg-3.col-sm-4
+                button.btn.btn-primary(type='submit') Analizar
           div
             #load.col-md-12(style='display: none;')
               .progress(style='height: 4px;')

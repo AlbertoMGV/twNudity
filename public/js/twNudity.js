@@ -1,5 +1,4 @@
 //CONTROLADOR PUBLICO
-//var config = require('../../components/twitter/twitterCtlr.js');
 
 //lama a la api de tw
 function analizeUser(arroba) {
@@ -14,7 +13,6 @@ function analizeUser(arroba) {
 			var div = document.getElementById("barra");
 			val=0;
 			var interid = setInterval(function () {
-				console.log(val);	
 		        if (val <= 101) {
 		            div.style.width = val+"%";
 		            val++;
