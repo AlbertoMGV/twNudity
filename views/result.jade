@@ -20,31 +20,37 @@ html(lang='en')
     link(rel='stylesheet', href='css/style.css')
   body
     .main-section
-      div
-        nav#ftco-navbar.navbar.navbar-expand-lg.navbar-dark.ftco_navbar.bg-dark.ftco-navbar-dark
-          .container
-            a.navbar-brand(href='/') twNudity
-            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#ftco-nav', aria-controls='ftco-nav', aria-expanded='false', aria-label='Toggle navigation')
-              span.oi.oi-menu
-              |  Menu
-            #ftco-nav.collapse.navbar-collapse
-              ul.navbar-nav.ml-auto
-                li.dropdown.nav-item
-                  a.dropdown-toggle.nav-link.icon.d-flex.align-items-center(href='#', data-toggle='dropdown')
-                    i.ion-ios-apps.mr-2
-                    |                 Componentes
-                    b.caret
-                  .dropdown-menu.dropdown-menu-left
-                    a.dropdown-item(href='https://developer.twitter.com/en/docs', target='_blank')
-                      i.ion-ios-document.mr-2
-                      |  Twitter API
-                    a.dropdown-item(href='https://www.tensorflow.org/js', target='_blank')
-                      i.ion-ios-document.mr-2
-                      |  Tensorflow.js
-                li.nav-item
-                  a.nav-link.icon.d-flex.align-items-center(href='https://github.com/AlbertoMGV/twNudity', target='_blank')
-                    i.ion-logo-github.mr-2
-                    |  Source Code
+      nav#ftco-navbar.navbar.navbar-expand-lg.navbar-dark.ftco_navbar.bg-dark.ftco-navbar
+        .container
+          a.navbar-brand(href='/') twNudity
+          button.navbar-toggler(type='button', data-toggle='collapse', data-target='#ftco-nav', aria-controls='ftco-nav', aria-expanded='false', aria-label='Toggle navigation')
+            span.oi.oi-menu
+            |  Menu
+          #ftco-nav.collapse.navbar-collapse
+            ul.navbar-nav.ml-auto
+              li.dropdown.nav-item
+                a.dropdown-toggle.nav-link.icon.d-flex.align-items-center(href='#', data-toggle='dropdown')
+                  i.ion-ios-apps.mr-2
+                  |                 Componentes
+                  b.caret
+                .dropdown-menu.dropdown-menu-left
+                  a.dropdown-item(href='https://developer.twitter.com/en/docs', target='_blank')
+                    i.ion-ios-document.mr-2
+                    |  Twitter API
+                  a.dropdown-item(href='https://www.tensorflow.org/js', target='_blank')
+                    i.ion-ios-document.mr-2
+                    |  Tensorflow.js
+                  a.dropdown-item(href='https://github.com/gantman/nsfw_model', target='_blank')
+                    i.ion-ios-document.mr-2
+                    |  Modelo
+              li.nav-item
+                a.nav-link.icon.d-flex.align-items-center(href='https://github.com/AlbertoMGV/twNudity', target='_blank')
+                  i.ion-logo-github.mr-2
+                  |  Source Code
+              li.nav-item
+                a.nav-link.icon.d-flex.align-items-center(href='http://albertomgv.com/', target='_blank')
+                  i.ion-md-contact.mr-2
+                  |  AlbertoMGV
       // END nav
       section#resultado.ftco-section.bg-light
         .container

@@ -40,10 +40,17 @@ html(lang='en')
                   a.dropdown-item(href='https://www.tensorflow.org/js', target='_blank')
                     i.ion-ios-document.mr-2
                     |  Tensorflow.js
+                  a.dropdown-item(href='https://github.com/gantman/nsfw_model', target='_blank')
+                    i.ion-ios-document.mr-2
+                    |  Modelo
               li.nav-item
                 a.nav-link.icon.d-flex.align-items-center(href='https://github.com/AlbertoMGV/twNudity', target='_blank')
                   i.ion-logo-github.mr-2
                   |  Source Code
+              li.nav-item
+                a.nav-link.icon.d-flex.align-items-center(href='http://albertomgv.com/', target='_blank')
+                  i.ion-md-contact.mr-2
+                  |  AlbertoMGV
       // END nav
       section.hero-wrap.js-fullheight
         .container
@@ -62,21 +69,21 @@ html(lang='en')
             .col-md-12.heading-title
               h1 ¿Que es?
               p
-                | Phasellus commodo eros quis leo pellentesque, ac elementum ligula porttitor. In sit amet dolor nec lorem lacinia porta interdum non lectus. Donec et cursus enim, a egestas justo. Nunc tristique, mauris ut ullamcorper imperdiet, felis orci vulputate purus, ut congue elit justo in dui. Sed malesuada ex hendrerit nibh hendrerit, id posuere augue iaculis. Aenean elit enim, laoreet ac accumsan quis, viverra ut massa. Nullam ut viverra sem. Donec nec tellus et elit pretium venenatis. Maecenas bibendum auctor sapien. Nullam sed facilisis enim. Aenean non nisi est. Nulla sit amet eleifend ligula, ut ultrices nisi. In hendrerit ante sed nunc semper pellentesque. Phasellus dignissim condimentum turpis, id eleifend augue gravida in.
+                | twNudity es un proyecto para la detección de contenido adulto en usuarios de Twitter. Para ello analiza la foto de perfil y la foto de fondo del usuario y por cada una de ellas dos, las evalua en dos categorias, si contienen pornografia y si contienen contenido sexy, es decir, contenido explicito que no llega a ser pornografia. Los resultados se muestran en porcentajes de probabilidad.
       section#como.ftco-section.bg-light
         .container
           .row
             .col-md-12.heading-title
               h1 ¿Como funciona?
               p
-                | Phasellus commodo eros quis leo pellentesque, ac elementum ligula porttitor. In sit amet dolor nec lorem lacinia porta interdum non lectus. Donec et cursus enim, a egestas justo. Nunc tristique, mauris ut ullamcorper imperdiet, felis orci vulputate purus, ut congue elit justo in dui. Sed malesuada ex hendrerit nibh hendrerit, id posuere augue iaculis. Aenean elit enim, laoreet ac accumsan quis, viverra ut massa. Nullam ut viverra sem. Donec nec tellus et elit pretium venenatis. Maecenas bibendum auctor sapien. Nullam sed facilisis enim. Aenean non nisi est. Nulla sit amet eleifend ligula, ut ultrices nisi. In hendrerit ante sed nunc semper pellentesque. Phasellus dignissim condimentum turpis, id eleifend augue gravida in.
+                | twNudity es un proyecto desarrollado con NodeJS. Utiliza la API de Twitter para obtener toda la información del usuario, y Tensorflow.js como libreria de machine learning para clasificar las imagenes. Para ello cuenta con un modelo entrenado y probado con un set de 15.000 fotografias obteniendo un 90% de aciertos.
       section#analizar.ftco-section.pb-0
         .container
           .row
             .col-md-12.heading-title
               h1 Empecemos
               p
-                | Phasellus commodo eros quis leo pellentesque, ac elementum ligula porttitor. In sit amet dolor nec lorem lacinia porta interdum non lectus. Donec et cursus enim, a egestas justo. Nunc tristique, mauris ut ullamcorper imperdiet, felis orci vulputate purus, ut congue elit justo in dui. Sed malesuada ex hendrerit nibh hendrerit, id posuere augue iaculis. Aenean elit enim, laoreet ac accumsan quis, viverra ut massa. Nullam ut viverra sem. Donec nec tellus et elit pretium venenatis. Maecenas bibendum auctor sapien. Nullam sed facilisis enim. Aenean non nisi est. Nulla sit amet eleifend ligula, ut ultrices nisi. In hendrerit ante sed nunc semper pellentesque. Phasellus dignissim condimentum turpis, id eleifend augue gravida in.
+                | Introduce un usuario que exista en Twitter, para analizar el contenido de la cuenta.
           div
             #error.alert.alert-danger(style='display: none;')
               .container
@@ -85,7 +92,7 @@ html(lang='en')
                     i.ion-ios-information-circle-outline
                   p.mb-0.ml-2
                     b Error
-                    |  El usuario no existe o ha petado algo raro para variar...
+                    |  El usuario no existe o no tiene establecida una foto de perfil o banner.
                 button.close(type='button', data-dismiss='alert', aria-label='Close')
                   span(aria-hidden='true')
                     i.ion-ios-close
@@ -97,8 +104,8 @@ html(lang='en')
                   .input-group
                     .input-group-prepend
                       span.input-group-text
-                        i.ion-ios-people
-                    input.form-control(type='text', name='usuario', placeholder='@ejemplo', required='')
+                        i.ion-ios-at
+                    input.form-control(type='text', name='usuario', placeholder='AlbertoMGV', required='')
               .col-lg-4.col-sm-4
                 button.btn.btn-primary(type='submit') Analizar
           div

@@ -85,8 +85,12 @@ router.post('/', function(req, res, next) {
                       data.profile_image_url_https = data.profile_image_url_https.replace("_normal", "")
                       data.created_at = data.created_at.substr(data.created_at.length - 4)
                       res.render('result', { data: data, resultado: resultado });
+                  } else {
+                    res.redirect('/#error')
                   }
               });
+          } else {
+            res.redirect('/#error')
           }
       });
     }
