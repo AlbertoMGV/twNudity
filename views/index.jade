@@ -78,7 +78,7 @@ html(lang='en')
               p
                 | Phasellus commodo eros quis leo pellentesque, ac elementum ligula porttitor. In sit amet dolor nec lorem lacinia porta interdum non lectus. Donec et cursus enim, a egestas justo. Nunc tristique, mauris ut ullamcorper imperdiet, felis orci vulputate purus, ut congue elit justo in dui. Sed malesuada ex hendrerit nibh hendrerit, id posuere augue iaculis. Aenean elit enim, laoreet ac accumsan quis, viverra ut massa. Nullam ut viverra sem. Donec nec tellus et elit pretium venenatis. Maecenas bibendum auctor sapien. Nullam sed facilisis enim. Aenean non nisi est. Nulla sit amet eleifend ligula, ut ultrices nisi. In hendrerit ante sed nunc semper pellentesque. Phasellus dignissim condimentum turpis, id eleifend augue gravida in.
           div
-            .alert.alert-danger
+            .alert.alert-danger(style='display: none;')
               .container
                 .d-flex
                   .alert-icon
@@ -101,10 +101,10 @@ html(lang='en')
             .col-lg-3.col-sm-4
               a.btn.btn-primary(href='#analizar') Analizar
           div
-            .col-md-12
+            .col-md-12(style='display: none;')
               .progress(style='height: 4px;')
                 .progress-bar(role='progressbar', style='width: 25%;', aria-valuenow='25', aria-valuemin='0', aria-valuemax='100')
-      section#resultado.ftco-section.bg-light
+      section#resultado.ftco-section.bg-light(style='display: none;')
         .container
           .row
             .col-md-12.heading-title
@@ -138,9 +138,11 @@ html(lang='en')
                 .card
                   img.card-img-top(src='images/bg_1.jpg', alt='...')
                 br
-      footer.ftco-section.ftco-section-2
+      br
+      br
+      footer.ftco-section.ftco-section-2(style='background-color: #007bff;')
         .col-md-12.text-center
-          p.mb-0
+          p.mb-0(style='color: white;')
             // Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
             | Copyright ©
             script.
@@ -148,7 +150,7 @@ html(lang='en')
             |  All rights reserved | This template is made with 
             i.icon-heart(aria-hidden='true')
             |  by 
-            a(href='https://colorlib.com', target='_blank') Colorlib
+            a(href='https://colorlib.com', target='_blank', style='color: white;') Colorlib
             // Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
             // loader
             #ftco-loader.show.fullscreen
