@@ -1,4 +1,4 @@
-# twnudity 📚
+# twNudity 📚
 
 <!-- TABLE OF CONTENTS -->
 ## Tabla de contenidos
@@ -19,6 +19,8 @@
 ## Información
 
 twNudity es un proyecto para la detección de contenido adulto en usuarios de Twitter. Para ello analiza la foto de perfil y la foto de fondo del usuario y por cada una de ellas dos, las evalua en dos categorias, si contienen pornografia y si contienen contenido sexy, es decir, contenido explicito que no llega a ser pornografia. Los resultados se muestran en porcentajes de probabilidad. Desarrollado con NodeJS. Utiliza la API de Twitter para obtener toda la información del usuario, y Tensorflow.js como libreria de machine learning para clasificar las imagenes. Para ello cuenta con un modelo entrenado y probado con un set de 15.000 fotografias obteniendo un 90% de aciertos.
+
+Live demo en [twnudity.albertomgv.com](http://twnudity.albertomgv.com/)
 
 ### Componentes
 * [Twitter API](https://developer.twitter.com/en/docs)
@@ -57,11 +59,12 @@ $ npm install
 
 3. Lanzar el proyecto
 
-
+#### Desarrollo
 ```sh
 $ npm run-script devstart
 ```
 
+#### Producción
 ```sh
 $ npm start
 ```
