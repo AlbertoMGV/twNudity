@@ -1,4 +1,4 @@
-# twNudity 📚
+# twNudity 💋
 
 <!-- TABLE OF CONTENTS -->
 ## Tabla de contenidos
@@ -87,4 +87,4 @@ Si quereis mejorar el proyecto o implementar cualquier cosa no dudeis en hacerlo
 ## Credits
 
 - Gracias al template [ Tools UI Kit ](https://colorlib.com/wp/template/tools-ui-kit/) de ColorlibHQ.
-- Gracias a la librería [ NSFWjs ](https://github.com/infinitered/nsfwjs) by Infinite Red, Inc.
+- Gracias al modelo [ NSFW ](https://github.com/gantman/nsfw_model) de GantMan.
