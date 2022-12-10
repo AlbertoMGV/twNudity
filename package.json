@@ -14,7 +14,7 @@
     "constantinople": "^4.0.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "jpeg-js": "^0.4.0",
